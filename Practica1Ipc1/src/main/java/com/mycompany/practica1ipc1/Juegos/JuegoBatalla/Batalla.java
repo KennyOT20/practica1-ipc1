@@ -4,27 +4,53 @@
  */
 package com.mycompany.practica1ipc1.Juegos.JuegoBatalla;
 
+import com.mycompany.practica1ipc1.Menus.MenusJuegos.MenusBatalla.MenuBatalla;
+
 /**
  *
  * @author Kenny
  */
 public class Batalla {
-    private final MotorBatalla motorBatalla;
+    private final  MotorBatalla motorBatalla;
+    private final MenuBatalla menuBatalla;
     private boolean batallaActiva;
+    
 
-    public Batalla() {
-        this.motorBatalla = new MotorBatalla();
+    public Batalla(MotorBatalla motorBatalla, MenuBatalla menuBatalla) {
+        this.motorBatalla = motorBatalla;
+        this.menuBatalla = menuBatalla;
         this.batallaActiva = true;
     }
     
     public void iniciarBatalla(){
         
-        while(motorBatalla.getVidaJugador() > 0 && motorBatalla.getVidaMaquina() > 0 && batallaActiva  ){
+        boolean letraCorrecta = motorBatalla.compararLetras(Character.toUpperCase(motorBatalla.getLetraJugador()));
+        
+        if(letraCorrecta == true){
+            motorBatalla.recibirDañoPersonajes(true);
+        } else{
+            motorBatalla.recibirDañoPersonajes(false);
+        }
+        
+        menuBatalla.informacionBatalla();
+        motorBatalla.actualizarLetraPensada(motorBatalla.getOpcionElegidaDificultas());
+
+        if(motorBatalla.getVidaJugador() <= 0 || motorBatalla.getVidaMaquina() <= 0 ){
+            batallaActiva = false;
+            return;
             
         }
         
+        menuBatalla.mostrarInformacion();
     }
     
-    
+
+    public boolean isBatallaActiva() {
+        return batallaActiva;
+    }
+
+    public void setBatallaActiva(boolean batallaActiva) {
+        this.batallaActiva = batallaActiva;
+    }
     
 }

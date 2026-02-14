@@ -6,8 +6,7 @@ package com.mycompany.practica1ipc1.Menus.MenusIniciales;
 
 import com.mycompany.practica1ipc1.Juegos.InstruccionesJuegos.InstruccionesBatalla;
 import com.mycompany.practica1ipc1.Menus.MenuBase.MenuBase;
-import com.mycompany.practica1ipc1.Menus.MenusJuegos.MenusBatalla.MenuBatalla;
-import java.util.Scanner;
+import com.mycompany.practica1ipc1.Menus.MenusJuegos.MenusBatalla.MenuOpcionesBatalla;
 
 /**
  *
@@ -16,12 +15,12 @@ import java.util.Scanner;
 public class MenuPrincipal extends MenuBase {
 
     private final InstruccionesBatalla instruccionesBatalla;
-    private final MenuBatalla menuBatalla;
+    private final MenuOpcionesBatalla menuBatalla;
     private int opcion;
 
     public MenuPrincipal() {
         this.instruccionesBatalla = new InstruccionesBatalla();
-        this.menuBatalla = new MenuBatalla();
+        this.menuBatalla = new MenuOpcionesBatalla();
     }
     
     
@@ -66,17 +65,16 @@ public class MenuPrincipal extends MenuBase {
 
     @Override
     public void validarOpcion() {
-         Scanner scanner = new Scanner(System.in);
         boolean opcionCorrecta = false;
         
         while(!opcionCorrecta){
             try{
-                opcion = Integer.parseInt(scanner.nextLine());
+                opcion = Integer.parseInt(getScanner().nextLine());
                 limpiarPantalla();
                 ejecutarOpcion();
                 opcionCorrecta = true;
             } catch(NumberFormatException e ){
-                scanner.nextLine();
+                getScanner().nextLine();
                 limpiarPantalla();
                 System.out.println("Opcion Incorrecta, intente de nuevo");
                 mostrarInformacion();
