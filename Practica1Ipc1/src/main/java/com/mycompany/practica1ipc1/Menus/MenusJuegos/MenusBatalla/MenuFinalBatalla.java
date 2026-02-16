@@ -4,7 +4,6 @@
  */
 package com.mycompany.practica1ipc1.Menus.MenusJuegos.MenusBatalla;
 
-import com.mycompany.practica1ipc1.Juegos.JuegoBatalla.MotorBatalla;
 import com.mycompany.practica1ipc1.Menus.MenuBase.MenuBase;
 import com.mycompany.practica1ipc1.Menus.MenusIniciales.MenuPrincipal;
 
@@ -16,13 +15,11 @@ public class MenuFinalBatalla  extends MenuBase{
 
     private final MenuPrincipal menuPrincipal;
     private final MenuOpcionesBatalla opcionesBatalla;
-    private final MotorBatalla motorBatalla;
     int opcion;
 
-    public MenuFinalBatalla(MenuPrincipal menuPrincipal, MenuOpcionesBatalla opcionesBatalla, MotorBatalla motorBatalla) {
-        this.menuPrincipal = menuPrincipal;
-        this.opcionesBatalla  = opcionesBatalla ;
-        this.motorBatalla = motorBatalla;
+    public MenuFinalBatalla() {
+        this.menuPrincipal = new MenuPrincipal();
+        this.opcionesBatalla  = new MenuOpcionesBatalla() ;
     }
     
     
@@ -30,40 +27,19 @@ public class MenuFinalBatalla  extends MenuBase{
     @Override
     public void mostrarInformacion() {
         System.out.println("-------------------------------------------");
-        System.out.println("|| La batalla ha finalizado      ||");
-        System.out.println("|| ¿Que desea hacer?             ||");
+        System.out.println("|| La batalla ha finalizado             ||");
+        System.out.println("|| ¿Que desea hacer?                    ||");
         System.out.println("-------------------------------------------");
-        System.out.println("||1. Volver a jugar.                  ||");
-        System.out.println("||2. Volver al menu inicial.     ||");
-        System.out.println("||3. Salir del programa.         ||");
+        System.out.println("||1. Volver a jugar.                    ||");
+        System.out.println("||2. Volver al menu inicial.            ||");
+        System.out.println("||3. Salir del programa.                ||");
         System.out.println("------------------------------------------");
+        System.out.print("Ingrese una opcion: ");
         validarOpcion();
     }
 
     @Override
     public void ejecutarOpcion() {
-        
-        boolean opcionCorrecta = false; 
-        
-        while(opcionCorrecta == false){
-            try{
-            opcion = Integer.valueOf(getScanner().nextLine());
-            limpiarPantalla();
-            validarOpcion();
-            opcionCorrecta = true;
-            } catch(NumberFormatException e){
-                getScanner().nextLine();
-                limpiarPantalla();
-                System.out.println("Opcion no valida, intente de nuevo.");
-                mostrarInformacion();
-            }
-           
-        }
-       
-    }
-
-    @Override
-    public void validarOpcion() {
         
         switch(opcion){
             case 1:
@@ -75,11 +51,41 @@ public class MenuFinalBatalla  extends MenuBase{
                 menuPrincipal.mostrarInformacion();
                 break;
             case 3:
+                System.exit(0);
                 break;
             default:
+                limpiarPantalla();
+                System.out.println("Opcion no valida, intente de nuevo.");
+                mostrarInformacion();
                 break;
         }
         
+    
     }
+    
+
+    @Override
+    public void validarOpcion() {
+        
+        boolean opcionCorrecta = false; 
+        
+        while(opcionCorrecta == false){
+            try{
+            opcion = Integer.parseInt(getScanner().nextLine());
+            limpiarPantalla();
+            ejecutarOpcion();
+            opcionCorrecta = true;
+            } catch(NumberFormatException e){
+                getScanner().nextLine();
+                limpiarPantalla();
+                System.out.println("Opcion no valida, intente de nuevo.");
+                mostrarInformacion();
+            }
+           
+        }
+       
+    }
+    
+    
     
 }

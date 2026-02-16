@@ -5,52 +5,56 @@
 package com.mycompany.practica1ipc1.Juegos.JuegoBatalla;
 
 import com.mycompany.practica1ipc1.Menus.MenusJuegos.MenusBatalla.MenuBatalla;
+import com.mycompany.practica1ipc1.Menus.MenusJuegos.MenusBatalla.MenuFinalBatalla;
 
 /**
  *
  * @author Kenny
  */
 public class Batalla {
-    private final  MotorBatalla motorBatalla;
+    private final  MotorJuegoBatalla motorBatalla;
     private final MenuBatalla menuBatalla;
-    private boolean batallaActiva;
-    
-
-    public Batalla(MotorBatalla motorBatalla, MenuBatalla menuBatalla) {
+    public Batalla(MotorJuegoBatalla motorBatalla, MenuBatalla menuBatalla) {
         this.motorBatalla = motorBatalla;
         this.menuBatalla = menuBatalla;
-        this.batallaActiva = true;
     }
     
-    public void iniciarBatalla(){
+     public void iniciarBatalla(){
         
-        boolean letraCorrecta = motorBatalla.compararLetras(Character.toUpperCase(motorBatalla.getLetraJugador()));
+        boolean letraCorrecta = motorBatalla.compararLetras(Character.toUpperCase(motorBatalla.getJugador().getLetra()));
         
         if(letraCorrecta == true){
             motorBatalla.recibirDañoPersonajes(true);
+            if(motorBatalla.getJugador().isSubioDeNivel() == true){
+                menuBatalla.informacionPersonaje();
+                motorBatalla.getJugador().setSubioDeNivel(false);
+            }
         } else{
             motorBatalla.recibirDañoPersonajes(false);
+             if(motorBatalla.getMaquina().isSubioDeNivel() == true){
+                menuBatalla.informacionPersonaje();
+                motorBatalla.getMaquina().setSubioDeNivel(false);
+            }
         }
-        
-        menuBatalla.informacionBatalla();
-        motorBatalla.actualizarLetraPensada(motorBatalla.getOpcionElegidaDificultas());
+       
+        estadoDeBatalla();
+    }
 
-        if(motorBatalla.getVidaJugador() <= 0 || motorBatalla.getVidaMaquina() <= 0 ){
-            batallaActiva = false;
-            return;
-            
+     private void estadoDeBatalla(){
+         menuBatalla.informacionBatalla();
+         motorBatalla.actualizarLetraPensada(motorBatalla.getOpcionElegidaDificultas());
+         
+          if(motorBatalla.getJugador().getVida() <= 0 || motorBatalla.getMaquina().getVida() <= 0 ){
+            informacionFinal();
         }
-        
+          
         menuBatalla.mostrarInformacion();
-    }
-    
-
-    public boolean isBatallaActiva() {
-        return batallaActiva;
-    }
-
-    public void setBatallaActiva(boolean batallaActiva) {
-        this.batallaActiva = batallaActiva;
-    }
+     }
+     
+     private void informacionFinal(){
+         MenuFinalBatalla menuFinal = new MenuFinalBatalla();
+         menuBatalla.informacionFinalDeBatalla();
+         menuFinal.mostrarInformacion();
+     }
     
 }

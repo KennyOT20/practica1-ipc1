@@ -4,7 +4,7 @@
  */
 package com.mycompany.practica1ipc1.Menus.MenusJuegos.MenusBatalla;
 
-import com.mycompany.practica1ipc1.Juegos.JuegoBatalla.MotorBatalla;
+import com.mycompany.practica1ipc1.Juegos.JuegoBatalla.MotorJuegoBatalla;
 import com.mycompany.practica1ipc1.Menus.MenuBase.MenuBase;
 import java.util.InputMismatchException;
 
@@ -15,12 +15,12 @@ import java.util.InputMismatchException;
 public class MenuOpcionesBatalla extends MenuBase{
     
     private int opcion;
-    private final MotorBatalla motorBatalla;
+    private final MotorJuegoBatalla motorBatalla;
     private final MenuBatalla menuBatalla;
     
 
     public MenuOpcionesBatalla() {
-        this.motorBatalla = new MotorBatalla();
+        this.motorBatalla = new MotorJuegoBatalla();
         this.menuBatalla = new MenuBatalla(motorBatalla);
     }
     
@@ -47,7 +47,7 @@ public class MenuOpcionesBatalla extends MenuBase{
     public void ejecutarOpcion() {
        limpiarPantalla();
        motorBatalla.setOpcionElegidaDificultas(opcion);
-       motorBatalla.setLetraPensada(motorBatalla.pensarLetra(opcion));
+       motorBatalla.getMaquina().setLetra(motorBatalla.pensarLetra(opcion));
        menuBatalla.mostrarInformacion();
     }
 

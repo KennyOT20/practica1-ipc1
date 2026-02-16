@@ -15,7 +15,7 @@ public class InstruccionesBatalla extends ClaseBaseInstrucciones{
       
         System.out.println("------------------------------------------------------------");
         System.out.println("||                                                        ||");
-        System.out.println("||        INSTRUCCIONES - JUEGO DE BATALLA                 ||");
+        System.out.println("||        INSTRUCCIONES - JUEGO DE BATALLA                ||");
         System.out.println("||                                                        ||");
         System.out.println("------------------------------------------------------------");
         System.out.println("|| La computadora pensará en una letra                    ||");

@@ -5,8 +5,10 @@
 package com.mycompany.practica1ipc1.Menus.MenusIniciales;
 
 import com.mycompany.practica1ipc1.Juegos.InstruccionesJuegos.InstruccionesBatalla;
+import com.mycompany.practica1ipc1.Juegos.InstruccionesJuegos.InstruccionesWordle;
 import com.mycompany.practica1ipc1.Menus.MenuBase.MenuBase;
 import com.mycompany.practica1ipc1.Menus.MenusJuegos.MenusBatalla.MenuOpcionesBatalla;
+import com.mycompany.practica1ipc1.Menus.MenusJuegos.MenusWordle.MenuInicialWordle;
 
 /**
  *
@@ -16,11 +18,15 @@ public class MenuPrincipal extends MenuBase {
 
     private final InstruccionesBatalla instruccionesBatalla;
     private final MenuOpcionesBatalla menuBatalla;
+    private final InstruccionesWordle instruccionesWordle;
+    private final MenuInicialWordle menuWordle;
     private int opcion;
 
     public MenuPrincipal() {
         this.instruccionesBatalla = new InstruccionesBatalla();
         this.menuBatalla = new MenuOpcionesBatalla();
+        this.instruccionesWordle = new InstruccionesWordle();
+        this.menuWordle = new MenuInicialWordle();
     }
     
     
@@ -29,7 +35,7 @@ public class MenuPrincipal extends MenuBase {
     public void mostrarInformacion() {
         System.out.println("------------------------------------------------------------");
         System.out.println("||                                                        ||");
-        System.out.println("||        BIENVENIDO A LA LIBRERIA DE JUEGOS               ||");
+        System.out.println("||        BIENVENIDO A LA LIBRERIA DE JUEGOS              ||");
         System.out.println("||                                                        ||");
         System.out.println("------------------------------------------------------------");
         System.out.println("||  1. Batallas                                           ||");
@@ -53,6 +59,10 @@ public class MenuPrincipal extends MenuBase {
                 menuBatalla.mostrarInformacion();
             }
             case 2 -> {
+                instruccionesWordle.mostrarInstrucciones();
+                getScanner().nextLine();
+                limpiarPantalla();
+                menuWordle.mostrarInformacion();
             }
             case 3 -> {
             }
