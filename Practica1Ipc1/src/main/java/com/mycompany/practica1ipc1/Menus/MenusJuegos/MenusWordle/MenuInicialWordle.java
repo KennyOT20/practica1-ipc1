@@ -4,6 +4,7 @@
  */
 package com.mycompany.practica1ipc1.Menus.MenusJuegos.MenusWordle;
 
+import com.mycompany.practica1ipc1.Juegos.JuegoWordle.MotorWordle;
 import com.mycompany.practica1ipc1.Menus.MenuBase.MenuBase;
 
 /**
@@ -13,6 +14,14 @@ import com.mycompany.practica1ipc1.Menus.MenuBase.MenuBase;
 public class MenuInicialWordle extends MenuBase {
 
     private String palabra; 
+    private final MotorWordle wordle;
+    private final MenuPartidaWordle menuPartida;
+    
+    public MenuInicialWordle(){
+        this.wordle = new MotorWordle();
+        this.menuPartida = new MenuPartidaWordle(wordle);
+    }
+    
     
     @Override
     public void mostrarInformacion() {
@@ -25,8 +34,9 @@ public class MenuInicialWordle extends MenuBase {
 
     @Override
     public void ejecutarOpcion() {
-        
-        
+        wordle.ingresarPalabraArreglo(palabra, false);
+        wordle.setPalabraOcultada(palabra);
+        menuPartida.mostrarInformacion();
     }
 
     @Override
@@ -34,7 +44,9 @@ public class MenuInicialWordle extends MenuBase {
         
         palabra = getScanner().nextLine().trim().toUpperCase();
         
-        if(palabra.length() == 5 && palabra.matches("[A-Z]{5}" )){
+        if(palabra.length() == 5 && palabra.matches("[A-Z]{5}")){
+            limpiarPantalla();
+            System.out.println("Palabra ocultada");
             ejecutarOpcion();
         } else {
             limpiarPantalla();
