@@ -25,10 +25,10 @@ public class MenuPartidaWordle extends MenuBase {
 
     @Override
     public void mostrarInformacion() {
-        System.out.println("---------------------------------------------");
-        System.out.println("|| Intente adivinar                 ||");
-        System.out.println("||         la palabra:                  || ");
-        System.out.println("--------------------------------------------");
+        System.out.println("-----------------------------------------");
+        System.out.println("|| Intente adivinar                    ||");
+        System.out.println("|| la palabra oculta:                  || ");
+        System.out.println("-----------------------------------------");
         System.out.println("Ingrese la palabra:");
         validarOpcion();
     }
@@ -61,21 +61,22 @@ public class MenuPartidaWordle extends MenuBase {
    
     public void estadoFinalDePartida(boolean partidaGanada ){
         
+        System.out.println("-----------------------------------");
         
         if(partidaGanada == true){
-            System.out.println("--------------------------------------------------");
-            System.out.println("|| Has adivinado la palabra oculta. ||");
-            System.out.println("|| --------------------------------------------||");
+            System.out.println("|| Has adivinado la              ||");
+            System.out.println("|| la palabra oculta.            || ");
+            System.out.println("-----------------------------------");
         } else {
-            System.out.println("|| No has logrado adivinar la palbra ||");
-            System.out.println("|| se te acabaron los intentos.          ||");
+            System.out.println("|| No has logrado               ||");
+            System.out.println("|| adivinar la palabra.          ||");
+            System.out.println("|| Se te acabaron los intentos.  ||");
         }
         
-        System.out.println("----------------------------------------------------");
-        System.out.println("|| La palabra oculta es: " + motorWordle.getPalabraOcultada());
-        System.out.println("----------------------------------------------------");
-        System.out.println("|| Intentos restantes:  " + motorWordle.getCantidadIntentos() + " / "  + motorWordle.getCantidadTotalDeIntentos());
-        System.out.println("-----------------------------------------------------");
+        System.out.println("-----------------------------------");
+        System.out.println("|| La palabra oculta es:         ||" );
+        System.out.println("|| " + motorWordle.getPalabraOcultada() + "                         ||");
+         System.out.println("-----------------------------------");
         
         MenuFinalWordle menuFinal = new MenuFinalWordle();
         menuFinal.mostrarInformacion();

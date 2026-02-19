@@ -9,6 +9,9 @@ Without this configuration present, some functionality in the IDE may be limited
     <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
         <word>calculo</word>
         <word>encargado</word>
+        <word>Metodo</word>
+        <word>partida</word>
         <word>usuario</word>
+        <word>verificando</word>
     </spellchecker-wordlist>
 </project-shared-configuration>

@@ -16,6 +16,7 @@ public class MenuInicialWordle extends MenuBase {
     private String palabra; 
     private final MotorWordle wordle;
     private final MenuPartidaWordle menuPartida;
+    private static int cantidadIniciadaWordle = 0;
     
     public MenuInicialWordle(){
         this.wordle = new MotorWordle();
@@ -25,9 +26,10 @@ public class MenuInicialWordle extends MenuBase {
     
     @Override
     public void mostrarInformacion() {
-        System.out.println("-------------------------------------------------------------");
+        cantidadIniciadaWordle ++;
+        System.out.println("---------------------------------------------------------");
         System.out.println("||         Bienvenido a Wordle                         ||");
-        System.out.println("-------------------------------------------------------------");
+        System.out.println("---------------------------------------------------------");
         System.out.print("Ingrese la palabra a ocultar: ");
         validarOpcion();
     }
@@ -55,6 +57,10 @@ public class MenuInicialWordle extends MenuBase {
             mostrarInformacion();
         }
         
+    }
+
+    public static int getCantidadIniciadaWordle() {
+        return cantidadIniciadaWordle;
     }
     
 }

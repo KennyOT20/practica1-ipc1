@@ -28,6 +28,8 @@ public class Batalla {
             if(motorBatalla.getJugador().isSubioDeNivel() == true){
                 menuBatalla.informacionPersonaje();
                 motorBatalla.getJugador().setSubioDeNivel(false);
+                MotorJuegoBatalla.setNivelAlto(motorBatalla.getJugador().getNivel());
+                motorBatalla.getJugador().verificarNivel();
             }
         } else{
             motorBatalla.recibirDañoPersonajes(false);
@@ -45,8 +47,15 @@ public class Batalla {
          motorBatalla.actualizarLetraPensada(motorBatalla.getOpcionElegidaDificultas());
          
           if(motorBatalla.getJugador().getVida() <= 0 || motorBatalla.getMaquina().getVida() <= 0 ){
+              if(motorBatalla.getMaquina().getVida() <= 0){
+                  MotorJuegoBatalla.setCantidadVecesGanadas(MotorJuegoBatalla.getCantidadVecesGanadas() + 1);
+              }
             informacionFinal();
+            
+            
         }
+          
+          
           
         menuBatalla.mostrarInformacion();
      }

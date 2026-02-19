@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.practica1ipc1.Menus.MenusJuegos.MenusWordle;
+package com.mycompany.practica1ipc1.Menus.MenusJuegos.MenusBasquet;
 
 import com.mycompany.practica1ipc1.Menus.MenuBase.MenuBase;
 import com.mycompany.practica1ipc1.Menus.MenuPrincipal.MenuPrincipal;
@@ -11,17 +11,17 @@ import com.mycompany.practica1ipc1.Menus.MenuPrincipal.MenuPrincipal;
  *
  * @author Kenny
  */
-public class MenuFinalWordle extends MenuBase{
-    
-    private final MenuInicialWordle menuInicial;
+public class MenuFinalBasquet extends MenuBase{
+
+    private final MenuInicialBasquet menuInicialBasquet;
     private final MenuPrincipal menuPrincipal;
     private int opcion;
-    
-    public MenuFinalWordle(){
-        this.menuInicial = new MenuInicialWordle();
-        this.menuPrincipal = new MenuPrincipal();
+
+    public MenuFinalBasquet() {
+        this.menuInicialBasquet =new MenuInicialBasquet();
+        this.menuPrincipal =new MenuPrincipal();
     }
-       
+    
     
     @Override
     public void mostrarInformacion() {
@@ -34,16 +34,14 @@ public class MenuFinalWordle extends MenuBase{
         System.out.println("--------------------------------------");
         System.out.print("Ingrese una opcion: ");
         validarOpcion();
-        
     }
 
     @Override
     public void ejecutarOpcion() {
-        
         switch(opcion){
             case 1:
                 limpiarPantalla();
-                menuInicial.mostrarInformacion();
+                menuInicialBasquet.mostrarInformacion();
                 break;
             case 2:
                 limpiarPantalla();
@@ -52,31 +50,35 @@ public class MenuFinalWordle extends MenuBase{
             case 3:
                 System.exit(0);
                 break;
-                default:
+            default:
                     limpiarPantalla();
                     System.out.println("Opcion incorrecta, intente de nuevo.");
                     mostrarInformacion();
                     break;
     }
+        
+        
     }
 
     @Override
     public void validarOpcion() {
-
-        boolean opcionValida = false;
         
-        while(opcionValida == false){
+         boolean opcionCorrecta = false; 
+        
+        while(opcionCorrecta == false){
             try{
-                opcion = Integer.parseInt(getScanner().nextLine());
-                limpiarPantalla();
-                ejecutarOpcion();
+            opcion = Integer.parseInt(getScanner().nextLine());
+            limpiarPantalla();
+            ejecutarOpcion();
+            opcionCorrecta = true;
             } catch(NumberFormatException e){
                 getScanner().nextLine();
-                System.out.println("Opcion invalida, intente de nuevo.");
+                limpiarPantalla();
+                System.out.println("Opcion no valida, intente de nuevo.");
                 mostrarInformacion();
             }
+           
         }
-        
     }
     
 }

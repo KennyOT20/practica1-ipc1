@@ -20,6 +20,8 @@ public class MotorJuegoBatalla {
     private final char letrasFacil[] = {'A', 'E', 'I', 'O', 'U'};
     private final char abecedario[] = new char [26];
     private int opcionElegidaDificultas;
+    private static int cantidadVecesGanadas;
+    private static int nivelAlto;
 
     //constructor para construir o crear el objeto.
     public MotorJuegoBatalla() {
@@ -123,6 +125,20 @@ public class MotorJuegoBatalla {
             abecedario[indice++] = letra;
         }
     }
+   
+    public void nivelMasAlto(){
+       int nivel =  Jugador.getNivelMasAlto();
+       nivelAlto = nivel;
+    }
+
+    public static int getNivelAlto() {
+        return nivelAlto;
+    }
+
+    public static void setNivelAlto(int nivelAlto) {
+        MotorJuegoBatalla.nivelAlto = nivelAlto;
+    }
+    
     
     protected boolean compararLetras(char letraJugador){       
         return letraJugador == maquina.getLetra();
@@ -151,5 +167,15 @@ public class MotorJuegoBatalla {
     public Maquina getMaquina() {
         return maquina;
     }
+
+    public static int getCantidadVecesGanadas() {
+        return cantidadVecesGanadas;
+    }
+
+    public static void setCantidadVecesGanadas(int cantidadVecesGanadas) {
+        MotorJuegoBatalla.cantidadVecesGanadas = cantidadVecesGanadas;
+    }
+    
+    
     
 }

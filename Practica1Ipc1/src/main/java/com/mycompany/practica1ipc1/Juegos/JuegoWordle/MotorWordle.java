@@ -17,6 +17,8 @@ public class MotorWordle {
     private String palabraIntento;
     private int cantidadIntentos;
     private int cantidadTotalDeIntentos;
+    private static int cantidadVecesPerdidas; 
+    private static int cantidadDeIntentos;
     private final String COLOR_ROJO = "\u001B[31m";
     private final String COLOR_VERDE = "\u001B[32m";
     private final String COLOR_AMARILLO =   "\u001B[33m"; 
@@ -104,9 +106,13 @@ public class MotorWordle {
     
     /**
      * Metodo encargado de ir pintando las letras segun su posicion.
-     * @param letraVerificada 
-     * @param posicionLetras
-     * @param columna 
+     * @param letraVerificada  recibre desde el metodo comparar letras una letra
+     * segun su posicion
+     * @param posicionLetras recibe numeros para identificar la posicion de las letras, si es 
+     * 1 entonces la letra es correcta y se pnta de verde, si es 2 la letra existe en el arreglo
+     * palabra oculta pero no esta un su posicion eta se pintara de amarillo, si es 3 la letra no 
+     * existe y se pinta de rojo.
+     * @param columna recibe la columna que se va recorriendo el arreglo.
      */
     private void pintarLetras(char letraVerificada, int posicionLetras, int columna){
         String letraColoreada;
@@ -127,28 +133,55 @@ public class MotorWordle {
         
     }
     
+    /**
+     * Metodo encargado de ir imprimiendo los intentos anterios con todo y sus colores asignados
+     * eb el metodo pintar letra. Ademas este metodo cumple  con la funcion de llamar dos metodos
+     * y un indice para una mejor visualizacion de la partida.
+     */
     public void imprimirIntentos(){
-
+        
+        System.out.println("-------------------------");
+        
+        
         for(int fila = 0; fila < cantidadIntentos; fila++){
-
+            System.out.print("|| " + (fila + 1) + " || ");
+            
+            
             for(int columna = 0; columna < intentosPalabraOculta[fila].length; columna++){
 
-                System.out.print(intentosPalabraOculta[fila][columna]);
+                System.out.print(intentosPalabraOculta[fila][columna] + "  ");
             }
-            System.out.println();
+            System.out.println("||");
         }
+        
+        System.out.println("-------------------------");
     }
 
-    
     // Getters y setters para acceder desde el exterior de esta clase a los atributos propios.
     public int getCantidadIntentos() {
         return cantidadIntentos;
     }
 
+    public static int getCantidadVecesPerdidas() {
+        return cantidadVecesPerdidas;
+    }
+
+    public static void setCantidadVecesPerdidas(int cantidadVecesPerdidas) {
+        MotorWordle.cantidadVecesPerdidas = cantidadVecesPerdidas;
+    }
     public void setCantidadIntentos(int cantidadIntentos) {
         this.cantidadIntentos = cantidadIntentos;
     }
 
+    public static int getCantidadDeIntentos() {
+        return cantidadDeIntentos;
+    }
+
+    public static void setCantidadDeIntentos(int cantidadDeIntentos) {
+        MotorWordle.cantidadDeIntentos = cantidadDeIntentos;
+    }
+
+    
     public void setCantidadTotalDeIntentos(int cantidadTotalDeIntentos) {
         this.cantidadTotalDeIntentos = cantidadTotalDeIntentos;
     }

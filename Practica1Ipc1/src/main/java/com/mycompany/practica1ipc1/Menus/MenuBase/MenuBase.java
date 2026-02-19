@@ -30,6 +30,8 @@ public abstract class MenuBase  {
     public Scanner getScanner() {
         return scanner;
     }
+
+    
     
     
     

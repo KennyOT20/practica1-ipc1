@@ -10,9 +10,20 @@ package com.mycompany.practica1ipc1.Juegos.JuegoBatalla;
  */
 public class Jugador extends Personaje {
     
+    private static int nivelMasAlto = 0;
     
     public Jugador() {
         super("Jugador");
+    }
+
+    public void verificarNivel(){
+        if (getNivel() > nivelMasAlto) {
+            nivelMasAlto = getNivel();
+        }
+    }
+    
+    public static int getNivelMasAlto() {
+        return nivelMasAlto;
     }
 
 }

@@ -17,6 +17,7 @@ public class MenuOpcionesBatalla extends MenuBase{
     private int opcion;
     private final MotorJuegoBatalla motorBatalla;
     private final MenuBatalla menuBatalla;
+    private static int cantidadIniciadaBatalla = 0;
     
 
     public MenuOpcionesBatalla() {
@@ -28,6 +29,9 @@ public class MenuOpcionesBatalla extends MenuBase{
 
     @Override
     public void mostrarInformacion() {
+        
+        cantidadIniciadaBatalla ++;
+        
         System.out.println("------------------------------------------------------------");
         System.out.println("||                                                        ||");
         System.out.println("||            SELECCIONE LA DIFICULTAD                    ||");
@@ -72,6 +76,10 @@ public class MenuOpcionesBatalla extends MenuBase{
 
     public int getOpcion() {
         return opcion;
+    }
+
+    public static int getCantidadIniciadaBatalla() {
+        return cantidadIniciadaBatalla;
     }
     
     

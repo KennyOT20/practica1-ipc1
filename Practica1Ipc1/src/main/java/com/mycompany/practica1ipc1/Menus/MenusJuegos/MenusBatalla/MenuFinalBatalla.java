@@ -5,7 +5,7 @@
 package com.mycompany.practica1ipc1.Menus.MenusJuegos.MenusBatalla;
 
 import com.mycompany.practica1ipc1.Menus.MenuBase.MenuBase;
-import com.mycompany.practica1ipc1.Menus.MenusIniciales.MenuPrincipal;
+import com.mycompany.practica1ipc1.Menus.MenuPrincipal.MenuPrincipal;
 
 /**
  *
@@ -26,10 +26,10 @@ public class MenuFinalBatalla  extends MenuBase{
     
     @Override
     public void mostrarInformacion() {
-        System.out.println("-------------------------------------------");
+        System.out.println("------------------------------------------");
         System.out.println("|| La batalla ha finalizado             ||");
         System.out.println("|| ¿Que desea hacer?                    ||");
-        System.out.println("-------------------------------------------");
+        System.out.println("------------------------------------------");
         System.out.println("||1. Volver a jugar.                    ||");
         System.out.println("||2. Volver al menu inicial.            ||");
         System.out.println("||3. Salir del programa.                ||");
